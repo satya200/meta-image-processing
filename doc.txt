@@ -6,6 +6,8 @@ Completed:
 -----------
 https://www.tutorialspoint.com/dip/signals_and_system_introduction.htm  ==> DIP Signal and System Introduction
 
+https://www.tutorialspoint.com/dip/camera_mechanism.htm  ==> Reading completed need to be captured in note book
+
 ////////////////////////////////////////////////////////////////////////
 
 Mostly We called this as a Digital Image Processing(DIP)
@@ -65,6 +67,86 @@ Conversion Of Analog to Digital Signal
 2> Quantization:
 -----------------
 	It will take quantity from y-axis
+
+Different Type of Images are present:
+-------------------------------------
+1> Orginal Image		4> Sharp Image
+2> Zoomed Image			5> Edges
+3> Blurr Image
+
+Color Processing:
+------------------
+Color processing means process of colored images and different color spaces that are used. For example RGB color, YCbCr, HSV. It also involves studying transmission, stprage and encoding of these color images.
+
+Video Processing:
+------------------
+A video is nothing but just very fast movement of pictures. The quality of video depends on number of frames/picture per second and quality of each frame is being used. Video processing involves noise reduction, detail enhancment, motion detection, frame rate conversion, asept ratio conversion, color space conversion etc.
+
+Dimension:
+-----------
+This is define the minimum number of pointes required to point a position any particular object within a space. The object which are present in earth having 3 measure things to idenify location
+	1> Longitude
+	2> Latitude
+	3> Altitude
+Above fast 2 define the location and thired one is define the height level from sea level.
+
+Different Dimension Signal:
+----------------------------
+1> 1-D Signal:
+---------------
+	Mathemetical Representation: f(x) waveform => Where x is independent variable. Please refer note book[].
+
+2> 2-D Signal:
+---------------
+	Mathemetical Representation: f(x,y) image => Where x & y is independent variable. Please refer note book[].
+
+3> 3-D Signal:
+---------------
+	Mathemetical Representation: f(x,y,z) Animated charecter => Where x & y & z is independent variable. Please refer note book[]. Here 3rd dimension will give deapth.
+
+4> 4-D Signal:
+---------------
+	Mathemetical Representation: f(x,y,z,t) Animated movie => Where x, y, z,t is independent variable. Please refer note book[]. Here 4th dimension represent time. Best example is 3d animated movie playes.
+
+How Human Eye works?
+---------------------
+Refer[] in note book
+
+When light fall on particular object it reflected back after stricking that object abd this reflection pass through the lense of eye from a particular angle, the image created in ratina which one is presnt back side of wall. The Image that is formed is inverted. This inverted image identify by brain and get re-invert.
+
+Image formation of analog camera:
+----------------------------------
+Refer[] in note book
+
+Example: Our old camera or roll/negative based camera
+In this camera the image formation is due to some chemical reaction that takes place on the strip(called negative or roll) that is use for image formation.
+A 35mm strip is used and it is coated with silver halid(a chemical substance). Here light is nothing but a small particle called photon particle. When this photon particle pass through the camera it hits with strip and some chemical reaction occure with silver halid present on striped and resultant we will get negative of image.
+
+Basic Block Diagram:
+---------------------
+Photon(light) + Silver Halid(present in stripe) + Some chemical reaction with silver halid + Image Negative
+
+Image formation of Digital camera:
+-----------------------------------
+Refer[] in note book
+
+In this camera CCD( Charge Couple Device ) array is used for capture Image. It is kind of image sensor. It will sense the image and produce the electrical signal.
+CCD is kind of shape of array in a rectangular grid. It is likes matrix in which each sensor sense the intensity of photon(light). Refer pic[] in note book
+
+Like analog camera in digital also after light fall on object it reflected and enter to camera. CCD having multiple analog sensor it will sense all the photones of light strike on the chip. So CCD having limited no of sensor that means it can save limites images. To measure no of photones stricking external CMOS sensor is attached with CCD.
+
+Introduction to Pixcell:
+-------------------------
+The nubmer of sensores = no of pixels. It means each sensor only have one and only one value.
+
+Storing Image:
+---------------
+The charges store in CCD are converted to voltage one pixcel at a time. using additinal circuit this voltage converted into digital information and stored. The quality of picture is depends on type and quality of CCD array that has been used.
+
+ 
+
+ 
+
 
 
 
