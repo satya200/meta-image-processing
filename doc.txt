@@ -76,6 +76,35 @@ Different Type of Images are present:
 2> Zoomed Image			5> Edges
 3> Blurr Image
 
+Continues Systems Called Analog Signal. [pic 2.0]
+Discrete System Called Digital Signal.	[pic 2.1]
+
+Human eye can only see visible proton. But Camera can able to see everythins libe X-ray(widely use in medical), Gama Ray(Use in nuclear medicine).
+
+Application Of DIP:
+--------------------
+
+
+    Image sharpening and restoration
+
+    Medical field
+
+    Remote sensing
+
+    Transmission and encoding
+
+    Machine/Robot vision
+
+    Color processing
+
+    Pattern recognition
+
+    Video processing
+
+    Microscopic Imaging
+
+    Others
+
 Color Processing:
 ------------------
 Color processing means process of colored images and different color spaces that are used. For example RGB color, YCbCr, HSV. It also involves studying transmission, stprage and encoding of these color images.
