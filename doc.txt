@@ -10,6 +10,8 @@ https://www.tutorialspoint.com/dip/camera_mechanism.htm  ==> Reading completed n
 
 https://www.tutorialspoint.com/dip/perspective_transformation.htm
 
+https://www.tutorialspoint.com/dip/concept_of_bits_per_pixel.htm
+
 ////////////////////////////////////////////////////////////////////////
 
 Mostly We called this as a Digital Image Processing(DIP)
@@ -216,6 +218,37 @@ Total no of pixel = Now of Row * No Of Col
 
 Perspective Transfprmation:
 ----------------------------
+When human eye see near things lookes bigger than far things. i.e. called Perspective. The perspective tranformation deals with convertion of 3d image to 2d image.
+
+There are total 5 frames are present and flow will be according to below order.
+a> Object => This frame is used to modeling object. For example checking that perticular object in proper place or not. This is 3d coordinate.
+
+b> World => This co-ordinate frame is used to co-relating object in 3d world.
+
+c> Camera co-ordinate => This co-ordinate put the object in respect to camera object.
+
+d> Image Co-ordinate => This will describe how 3d is mapped to 2d co-ordinate.
+
+e> Pixel Co-ordinate => This is 2d co-ordinate. Here each pixel have value.
+
+WHAT IS FOCAL LENGTH?
+----------------------
+ANS:-> Focal length of the lense is the distancebetween the lense and image sensor when subject is in focus normaly it is 28 to 100mm.
+
+Please check note book [pic ]
+
+Bits Per Pixel:
+-----------------
+The famos grey scale image is 8bit and the bpp=2 ^ 8 = 256 and 0 to 255. 0 is black and 255 is white
+So always 0 is black and white is (2)^bpp - 1.
+
+Image Storage:
+---------------
+Image storage totaly depend upon three things
+	1> Num of Rows
+	2> Num Of Colm
+	3> Num of bits per pixel
+Total Size = Rows * Colms * BPP
 
   
 
