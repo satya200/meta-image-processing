@@ -8,6 +8,8 @@ https://www.tutorialspoint.com/dip/signals_and_system_introduction.htm  ==> DIP 
 
 https://www.tutorialspoint.com/dip/camera_mechanism.htm  ==> Reading completed need to be captured in note book
 
+https://www.tutorialspoint.com/dip/perspective_transformation.htm
+
 ////////////////////////////////////////////////////////////////////////
 
 Mostly We called this as a Digital Image Processing(DIP)
@@ -142,6 +144,51 @@ The nubmer of sensores = no of pixels. It means each sensor only have one and on
 Storing Image:
 ---------------
 The charges store in CCD are converted to voltage one pixcel at a time. using additinal circuit this voltage converted into digital information and stored. The quality of picture is depends on type and quality of CCD array that has been used.
+
+Aperture:
+----------
+It is a small opening which allow light to pass inside camera. This is having some small no of hexagonal shape is present to adjust light. If we open more more light will pass.
+The effect of aperture directly correspond to broghtness and darkness of image. If apertue opening is wide it will allow more light to pass to camera and result photo lookes more brighter if it open less wide less light will pass and photo lookes darker.
+
+Size of aperture is inversly propertional to opening of aperture. Larger apertre size small f value(where f denoted as size of aperture) and vice versa.
+
+Shutter:
+---------
+After Aperture shutter will come. Shutter is like a black caution and ccd sensor is present behind it. When shutter is open light falls on image sensor and image is formed.
+Effect:
+-------
+	Ig shutter allow light to pass very longer the image will be brighter. In same case if shutter will close early image became darker.
+	Two types of shutter is present
+		1> Shutter Speed
+		2> Shutter Time
+	1> Shutter Speed:
+	-------------------
+		Number of time Shutter open and close.
+	2> Shutter Time:
+	------------------
+		How much time shutter open means (shutter open - shtter close)
+
+Relation:
+----------
+Shutter spped and shutter time is inversly propertional with each other.
+
+ISO:
+----
+ISO facter measures the no. It denotes sensitivity of light to camera. If the IOSO increase in image noise also increase. So now days max comapny's are working with noise reduction if ISO set to high.
+
+Pixel:
+-------
+Earch Pixel correspond to any one value. In 8-bit grey scale image the value will be between 0-255. The value of pixel at any point correspond to intensity of light photons striking at that point.
+
+Pixcel Relation with CCD Array:
+---------------------------------
+THE SMALLEST ELEMENT IN CCD ARRAY CALLED PIXEL.
+Total no of pixel = Now of Row * No Of Col
+
+Perspective Transfprmation:
+----------------------------
+
+  
 
  
 
