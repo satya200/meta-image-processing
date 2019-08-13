@@ -12,6 +12,8 @@ https://www.tutorialspoint.com/dip/perspective_transformation.htm
 
 https://www.tutorialspoint.com/dip/concept_of_bits_per_pixel.htm
 
+https://www.tutorialspoint.com/dip/zooming_methods.htm
+
 ////////////////////////////////////////////////////////////////////////
 
 Mostly We called this as a Digital Image Processing(DIP)
@@ -250,11 +252,149 @@ Image storage totaly depend upon three things
 	3> Num of bits per pixel
 Total Size = Rows * Colms * BPP
 
-  
+Types Of Images:
+-----------------
+1> Binary Image:
+-----------------
+	It containes only 2 pixel value 0 and 1. This resulting color is called Black and White Image. Here we not having greay scal data. Pixel having only 0 and 1. Binary Image having format called (Portable Bit map (PBM)).
 
- 
+8-Bit Color Format:
+--------------------
+This is called greay scale Image. This is having 256 different shades of images and range form (0 to 255) means 0 is black and 255 is white and 127 is greay. This images are not color image.
 
+RGB:
+-----
+This is color image. There are different type of color format is present. Like
+16-Bit Image:
+--------------
+	Here 5 Bit R, 6 Bit G, 5 Bit B. This depends according to the system.
+24-Bit Image:
+--------------
+	Here also same above rule will apply.
+
+Different Color Codes:
+-----------------------
+All colores we are going to discuss is 24 Bit so 8bit->R, 8bit->G, 8bit->B.
+Black Color ==> (0,0,0)
+white Color ==> (255, 255, 255)
+Red Color   ==> (255, 0, 0)
+Green Color ==> (0, 255, 0) 
+Blue Color   ==> (0, 0, 255)
+Grey Color   ==> (128, 128, 128)
+
+Convert RGB to Hex:
+-------------------  
+Example: Take White Color (255, 255, 255) ==> 255 / 16 = nearly 15 and reminder 15. So value is (FF FF FF)
+
+Convert Hex to RGB:
+--------------------
+In above example white (FF FF FF)  => Just Convet this hex to decimal.
+
+Convert Color Image to Greay Scale Image:
+------------------------------------------
+There are 2 methodes are present
+	a> Avg Methode
+	b> Weighted methode or luminosity methode
+
+a> Avg Methode:
+----------------
+	In this methode we will take avg of (R + G + B / 3). But this image we will not get proepr grey image. To avoide this we have go to Weighted methode.
  
+b> Weighted methode or luminosity methode:
+-------------------------------------------
+	New Formula = ((0.3 * R) + (0.59 * G) + (0.11 * B))
+ 
+Conversion of Analog to Digital Signal:
+----------------------------------------
+The o/p most of the image sensor is analog. We can not store analg signal becz it is infinite signal and will take infinite memory. So to convert digital signal or digital data we are following 2 methode
+	a> Sampling
+	b> Quantization
+So our image is 2 dimensional. X-axis called cordinate and Y-axis called amplitude.
+
+a> Sampling: [pic: note book-]
+-------------------------------
+This means we are digitizing the co-ordinates(x-axis) called sampling. We will collect samples for x-axis.
+Eq: y = sin(x) It is done on x variable.
+Again 2 types of sampling is present
+	a1> Up Sampling
+	a2> Down Sampling
+
+No of pixel = Total no of row * Tptal no of cols
+Let us we have total 25pixel means it is 5*5 matrix(5 rows and 5 cols) That means we can take maximum 25 samples. And here we come to know that pixel is a small part in CCD, means how many pixel that many sensors are present inside  CCd array. That means that no of samples is equal to no of CCd array.
+
+a1> Up Sampling / Over Sampling:
+---------------------------------
+The over sampling is very deep application in image processing which know as Zooming. THE DIFFERENCE BETWEEN ZOOMING AND SAMPLING IS SAMPLING IS COLLECTION OF PIXEL OR SAMPLES FROM ANALOG DATA BUT ZOOMING IS FROM DIGITAL DATA.
+
+a1> Up Sampling
+----------------
+
+For example
+
+If you are given an image with aspect ratio of 6:2 of an image of pixel resolution of 480000 pixels given the image is an gray scale image.
+
+And you are asked to calculate two things.
+
+    Resolve pixel resolution to calculate the dimensions of image
+    Calculate the size of the image
+
+Solution:
+Given:
+
+Aspect ratio: c:r = 6:2
+
+Pixel resolution: c * r = 480000
+
+Bits per pixel: grayscale image = 8bpp
+Find:
+
+Number of rows = ?
+
+Number of cols = ?
+Solving first part:
+--------------------
+	Equation-1 : col:row = 6:2 => col = 6row/2
+	Equation-2 : col * row = 480000
+
+	Comparing above 2 equation
+	6row/2 = 48000/row
+	=> 6row ^2 = 48000 * 2
+	=> row^2 = (48000 * 2)/6
+	=> row = sqrt((48000 * 2)/6) = 400
+
+Put above row value in Equation-1 col = 6*row / 2 => 1200
+
+Solving 2nd part:
+
+Size = rows * cols * bpp
+
+Size of image in bits = 400 * 1200 * 8 = 3840000 bits
+
+Size of image in bytes = 480000 bytes
+
+Size of image in kilo bytes = 48 kb (approx).
+
+Zooming:
+---------
+This means enlarging image to see details. This zooming we can do in 2 different ways. One is at the time of taking photo called hardware zooming(OPTICAL ZOOM) and other one is after taking photo we ll apply some algorithm to zoom called (DIGITAL ZOOM).
+Zooming methods:
+
+Although there are many methods that does this job, but we are going to discuss the most common of them here.
+
+They are listed below.
+
+    Pixel replication or (Nearest neighbor interpolation)
+    Zero order hold method
+    Zooming K times
+
+1> Pixel replication or (Nearest neighbor interpolation):
+----------------------------------------------------------
+
+2> Zero order hold method:
+---------------------------
+3> Zooming K times:
+--------------------
+
 
 
 
