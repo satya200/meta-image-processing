@@ -83,6 +83,9 @@ int bmp_rgb_to_gry()
 		} else {
 			printf("Image Write success\n");
         	}
+	} else {
+		printf("THIS IS NOT RGB IMAGE\n");
+		return -2;
 	}
 	
 	return 0;

@@ -39,3 +39,5 @@ int bmp_image_read(struct image_reader *img_rd);
 int bmp_image_write(struct image_writer *img_wr);
 int image_copy();
 int bmp_rgb_to_gry();
+int bmp_img_to_blkwhi();
+int bmp_img_increase_bright();

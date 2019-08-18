@@ -77,7 +77,13 @@ int bmp_image_read(struct image_reader *img_rd)
 	for (int i = 0; i < BMP_HEADER_SIZE; i++) {
 		img_rd->header[i] = getc(fp_src);
 	}
+	printf("1st====>%d\n",img_rd->header[0]);
+	printf("2nd=====>%d\n",img_rd->header[1]);
 
+	if ((img_rd->header[0] != 66) || (img_rd->header[1] != 77)) {
+		printf("THIS FILE IS NOT BMP FILE\n");
+		return -2;
+	}
 	/* Reading Width From Header */
 	(img_rd->width) = *(int *)(&(img_rd->header[18]));
 
@@ -131,7 +137,7 @@ int image_copy()
 	strcpy(img_rd.image_name, img_name_src_path);
 	ret = bmp_image_read(&img_rd);
 	if (ret < 0) {
-		printf("Error return from bmp_image_read()\n");
+		printf("Error code [%d] return from bmp_image_read()\n",ret);
 	} else {
 		printf("Image read success\n");
 	}
@@ -144,7 +150,7 @@ int image_copy()
 	img_wr.bitDepth = img_rd.bitDepth;
 	ret = bmp_image_write(&img_wr);
 	if (ret < 0) {
-		printf("Error return from bmp_image_write()\n");
+		printf("Error code [%d] return from bmp_image_write()\n",ret);
 	} else {
 		printf("Image write success\n");
 	}

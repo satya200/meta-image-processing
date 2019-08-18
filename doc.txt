@@ -2,6 +2,9 @@ Help ful Link:
 ---------------
 https://www.tutorialspoint.com/dip/grayscale_to_rgb_conversion
 
+http://www.dragonwins.com/domains/getteched/bmp/bmpfileformat.htm  ==> Help for BMP file format
+
+
 Completed:
 -----------
 https://www.tutorialspoint.com/dip/signals_and_system_introduction.htm  ==> DIP Signal and System Introduction
@@ -19,6 +22,11 @@ https://www.tutorialspoint.com/dip/concept_of_dithering.htm
 ////////////////////////////////////////////////////////////////////////
 
 Mostly We called this as a Digital Image Processing(DIP)
+
+There are different Image processing tech
+	a> Low Level ==> Premitive Operation Ex. Noise Reduction
+	b> Mid Level ===> Extraction of attribute Ex. Edge and contours
+	c> High Level ===> Analysis and interpretation
 
 What is DIP?
 -------------
