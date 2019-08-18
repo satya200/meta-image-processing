@@ -2,6 +2,9 @@ Help ful Link:
 ---------------
 https://www.tutorialspoint.com/dip/grayscale_to_rgb_conversion
 
+http://www.dragonwins.com/domains/getteched/bmp/bmpfileformat.htm  ==> Help for BMP file format
+
+
 Completed:
 -----------
 https://www.tutorialspoint.com/dip/signals_and_system_introduction.htm  ==> DIP Signal and System Introduction
@@ -10,9 +13,20 @@ https://www.tutorialspoint.com/dip/camera_mechanism.htm  ==> Reading completed n
 
 https://www.tutorialspoint.com/dip/perspective_transformation.htm
 
+https://www.tutorialspoint.com/dip/concept_of_bits_per_pixel.htm
+
+https://www.tutorialspoint.com/dip/zooming_methods.htm
+
+https://www.tutorialspoint.com/dip/concept_of_dithering.htm
+
 ////////////////////////////////////////////////////////////////////////
 
 Mostly We called this as a Digital Image Processing(DIP)
+
+There are different Image processing tech
+	a> Low Level ==> Premitive Operation Ex. Noise Reduction
+	b> Mid Level ===> Extraction of attribute Ex. Edge and contours
+	c> High Level ===> Analysis and interpretation
 
 What is DIP?
 -------------
@@ -216,12 +230,380 @@ Total no of pixel = Now of Row * No Of Col
 
 Perspective Transfprmation:
 ----------------------------
+When human eye see near things lookes bigger than far things. i.e. called Perspective. The perspective tranformation deals with convertion of 3d image to 2d image.
 
-  
+There are total 5 frames are present and flow will be according to below order.
+a> Object => This frame is used to modeling object. For example checking that perticular object in proper place or not. This is 3d coordinate.
 
+b> World => This co-ordinate frame is used to co-relating object in 3d world.
+
+c> Camera co-ordinate => This co-ordinate put the object in respect to camera object.
+
+d> Image Co-ordinate => This will describe how 3d is mapped to 2d co-ordinate.
+
+e> Pixel Co-ordinate => This is 2d co-ordinate. Here each pixel have value.
+
+WHAT IS FOCAL LENGTH?
+----------------------
+ANS:-> Focal length of the lense is the distancebetween the lense and image sensor when subject is in focus normaly it is 28 to 100mm.
+
+Please check note book [pic ]
+
+Bits Per Pixel:
+-----------------
+The famos grey scale image is 8bit and the bpp=2 ^ 8 = 256 and 0 to 255. 0 is black and 255 is white
+So always 0 is black and white is (2)^bpp - 1.
+
+Image Storage:
+---------------
+Image storage totaly depend upon three things
+	1> Num of Rows
+	2> Num Of Colm
+	3> Num of bits per pixel
+Total Size = Rows * Colms * BPP
+
+Types Of Images:
+-----------------
+1> Binary Image:
+-----------------
+	It containes only 2 pixel value 0 and 1. This resulting color is called Black and White Image. Here we not having greay scal data. Pixel having only 0 and 1. Binary Image having format called (Portable Bit map (PBM)).
+
+8-Bit Color Format:
+--------------------
+This is called greay scale Image. This is having 256 different shades of images and range form (0 to 255) means 0 is black and 255 is white and 127 is greay. This images are not color image.
+
+RGB:
+-----
+This is color image. There are different type of color format is present. Like
+16-Bit Image:
+--------------
+	Here 5 Bit R, 6 Bit G, 5 Bit B. This depends according to the system.
+24-Bit Image:
+--------------
+	Here also same above rule will apply.
+
+Different Color Codes:
+-----------------------
+All colores we are going to discuss is 24 Bit so 8bit->R, 8bit->G, 8bit->B.
+Black Color ==> (0,0,0)
+white Color ==> (255, 255, 255)
+Red Color   ==> (255, 0, 0)
+Green Color ==> (0, 255, 0) 
+Blue Color   ==> (0, 0, 255)
+Grey Color   ==> (128, 128, 128)
+
+Convert RGB to Hex:
+-------------------  
+Example: Take White Color (255, 255, 255) ==> 255 / 16 = nearly 15 and reminder 15. So value is (FF FF FF)
+
+Convert Hex to RGB:
+--------------------
+In above example white (FF FF FF)  => Just Convet this hex to decimal.
+
+Convert Color Image to Greay Scale Image:
+------------------------------------------
+There are 2 methodes are present
+	a> Avg Methode
+	b> Weighted methode or luminosity methode
+
+a> Avg Methode:
+----------------
+	In this methode we will take avg of (R + G + B / 3). But this image we will not get proepr grey image. To avoide this we have go to Weighted methode.
+ 
+b> Weighted methode or luminosity methode:
+-------------------------------------------
+	New Formula = ((0.3 * R) + (0.59 * G) + (0.11 * B))
+ 
+Conversion of Analog to Digital Signal:
+----------------------------------------
+The o/p most of the image sensor is analog. We can not store analg signal becz it is infinite signal and will take infinite memory. So to convert digital signal or digital data we are following 2 methode
+	a> Sampling
+	b> Quantization
+So our image is 2 dimensional. X-axis called cordinate and Y-axis called amplitude.
+
+a> Sampling: [pic: note book-]
+-------------------------------
+This means we are digitizing the co-ordinates(x-axis) called sampling. We will collect samples for x-axis.
+Eq: y = sin(x) It is done on x variable.
+Again 2 types of sampling is present
+	a1> Up Sampling
+	a2> Down Sampling
+
+No of pixel = Total no of row * Tptal no of cols
+Let us we have total 25pixel means it is 5*5 matrix(5 rows and 5 cols) That means we can take maximum 25 samples. And here we come to know that pixel is a small part in CCD, means how many pixel that many sensors are present inside  CCd array. That means that no of samples is equal to no of CCd array.
+
+a1> Up Sampling / Over Sampling:
+---------------------------------
+The over sampling is very deep application in image processing which know as Zooming. THE DIFFERENCE BETWEEN ZOOMING AND SAMPLING IS SAMPLING IS COLLECTION OF PIXEL OR SAMPLES FROM ANALOG DATA BUT ZOOMING IS FROM DIGITAL DATA.
+
+a1> Up Sampling
+----------------
+
+For example
+
+If you are given an image with aspect ratio of 6:2 of an image of pixel resolution of 480000 pixels given the image is an gray scale image.
+
+And you are asked to calculate two things.
+
+    Resolve pixel resolution to calculate the dimensions of image
+    Calculate the size of the image
+
+Solution:
+Given:
+
+Aspect ratio: c:r = 6:2
+
+Pixel resolution: c * r = 480000
+
+Bits per pixel: grayscale image = 8bpp
+Find:
+
+Number of rows = ?
+
+Number of cols = ?
+Solving first part:
+--------------------
+	Equation-1 : col:row = 6:2 => col = 6row/2
+	Equation-2 : col * row = 480000
+
+	Comparing above 2 equation
+	6row/2 = 48000/row
+	=> 6row ^2 = 48000 * 2
+	=> row^2 = (48000 * 2)/6
+	=> row = sqrt((48000 * 2)/6) = 400
+
+Put above row value in Equation-1 col = 6*row / 2 => 1200
+
+Solving 2nd part:
+
+Size = rows * cols * bpp
+
+Size of image in bits = 400 * 1200 * 8 = 3840000 bits
+
+Size of image in bytes = 480000 bytes
+
+Size of image in kilo bytes = 48 kb (approx).
+
+Zooming:
+---------
+This means enlarging image to see details. This zooming we can do in 2 different ways. One is at the time of taking photo called hardware zooming(OPTICAL ZOOM) and other one is after taking photo we ll apply some algorithm to zoom called (DIGITAL ZOOM).
+Zooming methods:
+
+Although there are many methods that does this job, but we are going to discuss the most common of them here.
+
+They are listed below.
+
+    Pixel replication or (Nearest neighbor interpolation)
+    Zero order hold method
+    Zooming K times
+
+1> Pixel replication or (Nearest neighbor interpolation):
+----------------------------------------------------------
+
+Introduction:
+
+It is also known as Nearest neighbor interpolation. As its name suggest, in this method, we just replicate the neighboring pixels. As we have already discussed in the tutorial of Sampling, that zooming is nothing but increase amount of sample or pixels. This algorithm works on the same principle.
+Working:
+
+In this method we create new pixels form the already given pixels. Each pixel is replicated in this method n times row wise and column wise and you got a zoomed image. Its as simple as that.
+For example:
+
+if you have an image of 2 rows and 2 columns and you want to zoom it twice or 2 times using pixel replication, here how it can be done.
+
+For a better understanding, the image has been taken in the form of matrix with the pixel values of the image.
+1 	2
+3 	4
+
+The above image has two rows and two columns, we will first zoom it row wise.
+
+Row wise zooming:
+
+When we zoom it row wise, we will just simple copy the rows pixels to its adjacent new cell.
+
+Here how it would be done.
+1 	1 	2 	2
+3 	3 	4 	4
+
+As you can that in the above matrix, each pixel is replicated twice in the rows.
+Column size zooming:
+
+The next step is to replicate each of the pixel column wise, that we will simply copy the column pixel to its adjacent new column or simply below it.
+
+Here how it would be done.
+1 	1 	2 	2
+1 	1 	2 	2
+3 	3 	4 	4
+3 	3 	4 	4
+New image size:
+
+As it can be seen from the above example, that an original image of 2 rows and 2 columns has been converted into 4 rows and 4 columns after zooming. That means the new image has a dimensions of
+
+(Original image rows * zooming factor, Original Image cols * zooming factor)
+Advantage and disadvantage:
+
+One of the advantage of this zooming technique is, it is very simple. You just have to copy the pixels and nothing else.
+
+The disadvantage of this technique is that image got zoomed but the output is very blurry. And as the zooming factor increased, the image got more and more blurred. That would eventually result in fully blurred image.
+
+2> Zero order hold method:
+---------------------------
+Introduction
+
+Zero order hold method is another method of zooming. It is also known as zoom twice. Because it can only zoom twice. We will see in the below example that why it does that.
+Working
+
+In zero order hold method, we pick two adjacent elements from the rows respectively and then we add them and divide the result by two, and place their result in between those two elements. We first do this row wise and then we do this column wise.
+For example
+
+Lets take an image of the dimensions of 2 rows and 2 columns and zoom it twice using zero order hold.
+1 	2
+3 	4
+
+First we will zoom it row wise and then column wise.
+Row wise zooming
+1 	1 	2
+3 	3 	4
+
+As we take the first two numbers : (2 + 1) = 3 and then we divide it by 2, we get 1.5 which is approximated to 1. The same method is applied in the row 2.
+
+Column wise zooming
+1 	1 	2
+2 	2 	3
+3 	3 	4
+
+We take two adjacent column pixel values which are 1 and 3. We add them and got 4. 4 is then divided by 2 and we get 2 which is placed in between them. The same method is applied in all the columns.
+New image size
+
+As you can see that the dimensions of the new image are 3 x 3 where the original image dimensions are 2 x 2. So it means that the dimensions of the new image are based on the following formula
+
+(2(number of rows) minus 1) X (2(number of columns) minus 1)
+Advantages and disadvantage.
+
+One of the advantage of this zooming technique , that it does not create as blurry picture as compare to the nearest neighbor interpolation method. But it also has a disadvantage that it can only run on the power of 2. It can be demonstrated here.
+Reason behind twice zooming:
+
+Consider the above image of 2 rows and 2 columns. If we have to zoom it 6 times, using zero order hold method , we can not do it. As the formula shows us this.
+
+It could only zoom in the power of 2 2,4,8,16,32 and so on.
+
+Even if you try to zoom it, you can not. Because at first when you will zoom it two times, and the result would be same as shown in the column wise zooming with dimensions equal to 3x3. Then you will zoom it again and you will get dimensions equal to 5 x 5. Now if you will do it again, you will get dimensions equal to 9 x 9.
+
+Whereas according to the formula of yours the answer should be 11x11. As (6(2) minus 1) X (6(2) minus 1) gives 11 x 11.
+
+3> Zooming K times:
+--------------------
+
+Introduction:
+
+K times is the third zooming method we are going to discuss. It is one of the most perfect zooming algorithm discussed so far. It caters the challenges of both twice zooming and pixel replication. K in this zooming algorithm stands for zooming factor.
+Working:
+
+It works like this way.
+
+First of all, you have to take two adjacent pixels as you did in the zooming twice. Then you have to subtract the smaller from the greater one. We call this output (OP).
+
+Divide the output(OP) with the zooming factor(K). Now you have to add the result to the smaller value and put the result in between those two values.
+
+Add the value OP again to the value you just put and place it again next to the previous putted value. You have to do it till you place k-1 values in it.
+
+Repeat the same step for all the rows and the columns , and you get a zoomed images.
+For example:
+
+Suppose you have an image of 2 rows and 3 columns, which is given below. And you have to zoom it thrice or three times.
+15 	30 	15
+30 	15 	30
+
+K in this case is 3. K = 3.
+
+The number of values that should be inserted is k-1 = 3-1 = 2.
+Row wise zooming
+----------------
+Take the first two adjacent pixels. Which are 15 and 30.
+
+Subtract 15 from 30. 30-15 = 15.
+
+Divide 15 by k. 15/k = 15/3 = 5. We call it OP.(where op is just a name)
+
+Add OP to lower number. 15 + OP = 15 + 5 = 20.
+
+Add OP to 20 again. 20 + OP = 20 + 5 = 25.
+
+We do that 2 times because we have to insert k-1 values.
+
+Now repeat this step for the next two adjacent pixels. It is shown in the first table.
+
+After inserting the values, you have to sort the inserted values in ascending order, so there remains a symmetry between them.
+
+It is shown in the second table
+Table 1.
+15 	20 	25 	30 	20 	25 	15
+30 	20 	25 	15 	20 	25 	30
+Table 2.
+Table2 
+
+Column wise zooming
+
+The same procedure has to be performed column wise. The procedure include taking the two adjacent pixel values, and then subtracting the smaller from the bigger one. Then after that, you have to divide it by k. Store the result as OP. Add OP to smaller one, and then again add OP to the value that comes in first addition of OP. Insert the new values.
+
+Here what you got after all that.
+15 	20 	25 	30 	25 	20 	15
+20 	21 	21 	25 	21 	21 	20
+25 	22 	22 	20 	22 	22 	25
+30 	25 	20 	15 	20 	25 	30
+New image size
+
+The best way to calculate the formula for the dimensions of a new image is to compare the dimensions of the original image and the final image. The dimensions of the original image were 2 X 3. And the dimensions of the new image are 4 x 7.
+
+The formula thus is:
+
+(K (number of rows minus 1) + 1) X (K (number of cols minus 1) + 1)
+
+Advantages and disadvantages
+
+The one of the clear advantage that k time zooming algorithm has that it is able to compute zoom of any factor which was the power of pixel replication algorithm , also it gives improved result (less blurry) which was the power of zero order hold method. So hence It comprises the power of the two algorithms.
+
+The only difficulty this algorithm has that it has to be sort in the end, which is an additional step, and thus increases the cost of computation.
+
+Spatial Resolutiom:
+--------------------
+This resolution states that clarity of an image can not be determined by pixel resolution. The number of pixel in an image does not matter.
+
+Spatial resolution can be defined as the
+
+smallest discernible detail in an image. (Digital Image Processing - Gonzalez, Woods - 2nd Edition)
+
+Or in other way we can define spatial resolution as the number of independent pixels values per inch.
+
+Measuring spatial resolution:
+------------------------------
+This resolution refer to clarity so for different devices different measure has been madeto measure it.
+	1> Dots per inch (DPI) ==> used in Moniter
+	2> Lines Per inch (LPI) ===> Used in laser printer
+	3> Pixel per inch (PPI) ====> Used in Tablet, mobile etc
+
+Image Formats:
+---------------
+1> JPEG (Joint Photographic Expert Group) ==> Lossy Compression
+
+2> GIF (Graphics Interchange Format)  ===> Lossely Compression Limited to 8-bit color
+
+3> BMP (Bit Map Picture) ===> Basic Format Lossely Compression
+
+4> PNG (Portable Network Graphics)  ==> Lossely Compression
+
+5> TIFF (Tag Image File Format)   ====> Very Flexible Compressed/Un Compressed
+
+Image Data Type:
+-----------------
+1> Binary Image ==> 2D array. Assign 1 or 0 in each pixel
+
+2> Intensity or greyscale image   ==> 2D array. Each pixel having some value
+
+3> RGB or true color image  ===> 3D array. Each pixel having 3 R, G, B field
+
+4> Floating - Point Image   ===> Do not store integer value. Only store floating value. Mostly use in medical, science etc. 
  
 
- 
 
 
 
