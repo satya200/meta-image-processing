@@ -1,3 +1,9 @@
+/*
+ * AUTHOR: Satya Sundar Sahu
+ * DATE: 18-Aug-2019
+ * Contact: tinkusahu.com@gmail.com
+ * DESC: This is main file for image processing project
+ * */
 #include"my_header.h"
 
 int main()
@@ -6,7 +12,7 @@ int main()
 	int choice = 0;
 	while(1) {
 		printf("Please Enter below choice\n");
-		printf("0: Exit\n1: Copy Image SRC to DEST\n");
+		printf("0: Exit\n1: Copy Image SRC to DEST\n2: RGB to greay convert\n");
 		scanf("%d",&choice);
 		switch(choice) {
 		case 0:
@@ -14,6 +20,10 @@ int main()
 		case 1: 
 			printf("Please enter src image name and dst image name\n");
 			ret = image_copy();
+			break;
+		case 2: 
+			printf("Please enter src image name and dst image name\n");
+			ret = bmp_rgb_to_gry();
 			break;
 		default:
 			printf("Invalid choice\n");

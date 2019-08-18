@@ -1,3 +1,9 @@
+/*
+ * AUTHOR: Satya Sundar Sahu
+ * DATE: 18-Aug-2019
+ * DESC: This is main file for image processing project
+ * */
+
 #include"my_header.h"
 
 /*

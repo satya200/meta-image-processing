@@ -1,3 +1,9 @@
+/*
+ * AUTHOR: Satya Sundar Sahu
+ * DATE: 18-Aug-2019
+ * DESC: This is main file for image processing project
+ * */
+
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
@@ -32,3 +38,4 @@ struct image_writer {
 int bmp_image_read(struct image_reader *img_rd);
 int bmp_image_write(struct image_writer *img_wr);
 int image_copy();
+int bmp_rgb_to_gry();
