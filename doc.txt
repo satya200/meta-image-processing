@@ -573,7 +573,27 @@ This resolution refer to clarity so for different devices different measure has 
 	2> Lines Per inch (LPI) ===> Used in laser printer
 	3> Pixel per inch (PPI) ====> Used in Tablet, mobile etc
 
+Image Formats:
+---------------
+1> JPEG (Joint Photographic Expert Group) ==> Lossy Compression
 
+2> GIF (Graphics Interchange Format)  ===> Lossely Compression Limited to 8-bit color
+
+3> BMP (Bit Map Picture) ===> Basic Format Lossely Compression
+
+4> PNG (Portable Network Graphics)  ==> Lossely Compression
+
+5> TIFF (Tag Image File Format)   ====> Very Flexible Compressed/Un Compressed
+
+Image Data Type:
+-----------------
+1> Binary Image ==> 2D array. Assign 1 or 0 in each pixel
+
+2> Intensity or greyscale image   ==> 2D array. Each pixel having some value
+
+3> RGB or true color image  ===> 3D array. Each pixel having 3 R, G, B field
+
+4> Floating - Point Image   ===> Do not store integer value. Only store floating value. Mostly use in medical, science etc. 
  
 
 
