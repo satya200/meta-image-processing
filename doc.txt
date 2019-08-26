@@ -601,8 +601,11 @@ Image Data Type:
 
 3> RGB or true color image  ===> 3D array. Each pixel having 3 R, G, B field
 
-4> Floating - Point Image   ===> Do not store integer value. Only store floating value. Mostly use in medical, science etc. 
- 
+4> Floating - Point Image   ===> Do not store integer value. Only store floating value. Mostly use in medical, science etc.
+///////////////////////////////////////////
+Dithering:
+----------
+
 
 
 

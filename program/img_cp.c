@@ -37,6 +37,7 @@ int bmp_image_write(struct image_writer *img_wr)
 
 	/* Writting Color Table  to new file */
 	if (img_wr->bitDepth <= 8) {
+		printf("color depth:%d\n",img_wr->bitDepth);
 		fwrite(img_wr->colorTable, sizeof(unsigned char), 1024, fp_dst);
 	}
 

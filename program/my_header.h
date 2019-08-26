@@ -42,3 +42,4 @@ int image_copy();
 int bmp_rgb_to_gry();
 int bmp_img_to_blkwhi();
 int bmp_img_increase_bright();
+int bmp_img_reduce_grey_level();
