@@ -6,6 +6,8 @@ http://www.dragonwins.com/domains/getteched/bmp/bmpfileformat.htm  ==> Help for 
 
 https://docs.opencv.org/master/d3/dc1/tutorial_basic_linear_transform.html  ==> Opencv related link
 
+https://solarianprogrammer.com/2019/06/10/c-programming-reading-writing-images-stb_image-libraries/
+
 
 Completed:
 -----------
