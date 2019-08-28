@@ -11,12 +11,17 @@
 #define IMG_NAME_BUFF_LENGTH	16
 #define IMG_NAME_PATH_LENGTH	256
 //#define IMG_SEARCH_PATH		"~/satya_git/meta-image-processing/TestImages"
-//#define IMG_SEARCH_PATH		"/home/satya/satya_git/meta-image-processing/TestImages"
-#define IMG_SEARCH_PATH		"/home/nullbyte/satya_bitbucket/my-git/meta-image-processing/TestImages"
+#define IMG_SEARCH_PATH		"/home/satya/satya_git/meta-image-processing/TestImages"
+//#define IMG_SEARCH_PATH		"/home/nullbyte/satya_bitbucket/my-git/meta-image-processing/TestImages"
 
 #define BMP_HEADER_SIZE         54
 #define BMP_COLOR_TABLE_SIZE    1024
 #define CUSTOM_IMG_SIZE         1024*1024
+
+enum image_type {
+	GREAY = 0,
+	RGB
+};
 
 struct image_reader {
 	char image_name[IMG_NAME_PATH_LENGTH];
