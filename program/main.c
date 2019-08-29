@@ -12,7 +12,7 @@ int main()
 	int choice = 0;
 	while(1) {
 		printf("Please Enter below choice\n");
-		printf("0: Exit\n1: Copy Image SRC to DEST\n2: RGB to greay convert\n3: Convert to black and white\n4: Increase Brightness\n5: Reduce Greay Level\n6: Plot Histogram\n");
+		printf("0: Exit\n1: Copy Image SRC to DEST\n2: RGB to greay convert\n3: Convert to black and white\n4: Increase Brightness\n5: Reduce Greay Level\n6: Plot Histogram\n7: Histogram Equlization\n");
 		scanf("%d",&choice);
 		switch(choice) {
 		case 0:
@@ -38,6 +38,9 @@ int main()
 			break;
 		case 6:
 			ret = bmp_creat_histogram();
+			break;
+		case 7:
+			ret = bmp_histogram_equ();
 			break;
 		default:
 			printf("Invalid choice\n");

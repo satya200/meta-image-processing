@@ -138,7 +138,7 @@ Color processing means process of colored images and different color spaces that
 
 Video Processing:
 ------------------
-A video is nothing but just very fast movement of pictures. The quality of video depends on number of frames/picture per second and quality of each frame is being used. Video processing involves noise reduction, detail enhancment, motion detection, frame rate conversion, asept ratio conversion, color space conversion etc.
+A video is nothing but just very fast movement of pictures. The quality of video depends on nlighthouse.bmpumber of frames/picture per second and quality of each frame is being used. Video processing involves noise reduction, detail enhancment, motion detection, frame rate conversion, asept ratio conversion, color space conversion etc.
 
 Dimension:
 -----------
@@ -644,6 +644,10 @@ Brightness is a relative term. It depends on your visual perception. Since brigh
 Contrast:
 ----------
 This is the difference between max and min pixel intensity in an image.
+
+Formula To Increase Contrast:
+------------------------------
+	g(x, y) = ((f(x, y) - Fmin)/(Fmax - Fmin)) * 2bpp (bpp: bit per pixel for 8 bit greay scale 255)
 
 
 

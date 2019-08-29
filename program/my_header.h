@@ -11,8 +11,8 @@
 #define IMG_NAME_BUFF_LENGTH	16
 #define IMG_NAME_PATH_LENGTH	256
 //#define IMG_SEARCH_PATH		"~/satya_git/meta-image-processing/TestImages"
-#define IMG_SEARCH_PATH		"/home/satya/satya_git/meta-image-processing/TestImages"
-//#define IMG_SEARCH_PATH		"/home/nullbyte/satya_bitbucket/my-git/meta-image-processing/TestImages"
+//#define IMG_SEARCH_PATH		"/home/satya/satya_git/meta-image-processing/TestImages"
+#define IMG_SEARCH_PATH		"/home/nullbyte/satya_bitbucket/my-git/meta-image-processing/TestImages"
 
 #define BMP_HEADER_SIZE         54
 #define BMP_COLOR_TABLE_SIZE    1024
@@ -49,3 +49,4 @@ int bmp_img_to_blkwhi();
 int bmp_img_increase_bright();
 int bmp_img_reduce_grey_level();
 int bmp_creat_histogram();
+int bmp_histogram_equ();
