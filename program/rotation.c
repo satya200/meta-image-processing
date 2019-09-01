@@ -24,18 +24,28 @@ int bmp_img_right_rot(struct image_reader_mat img_rd, struct image_writer_mat *i
 	if (rot == 1) {
 		printf("Satya==>In rotation\n");
 		for (x = 0; x < row; x++) {
-			//printf("Satya==>row%d\n",x);
 			for (y = 0; y < col; y++) {
-				//printf("Satya==>col%d\n",y);
 				img_wr->buf[y][col-1-x] = img_rd.buf[x][y];
-				//img_wr->buf[x][y] = img_rd.buf[x][y];
+				//img_wr->buf[y][x] = img_rd.buf[x][y];
 			}
 		}
 		ret = 0;
 	} else if (rot == 2) {
-		printf("Cooming Soon\n");
+		printf("Satya==>In rotation left\n");
+		for (x = 0; x < row; x++) {
+			for (y = 0; y < col; y++) {
+				img_wr->buf[y][x] = img_rd.buf[x][y];
+			}
+		}
+		ret = 0;
 	} else if (rot == 3) {
-		printf("Cooming Soon\n");
+		printf("Satya==>In rotation 180\n");
+		for (x = 0; x < row; x++) {
+			for (y = 0; y < col; y++) {
+				img_wr->buf[row-x][y] = img_rd.buf[x][y];
+			}
+		}
+		ret = 0;
 	} else {
 		printf("In valid choice\n");
 	}
@@ -114,11 +124,33 @@ int bmp_image_rotation()
 		printf("Rotation return invalid\n");
 		return -2;
 	}
-	ret = bmp_image_write_mat(&img_wr, img_size);
+	printf("Before write img_size=%d\n",img_size);
+	ret = bmp_image_write_mat(&img_wr, row, col);
 	if (ret < 0) {
 		printf("Error return from image_erite bmp_brightness_correction()\n");
 	} else {
 		printf("Image write success\n");
         }
+
+	sync();
+	int i;
+        for (i = 0; i < row; i++) {
+                if ((img_wr.buf[i]) && (img_rd.buf[i])) {
+			free(img_wr.buf[i]);
+			free(img_rd.buf[i]);
+			img_wr.buf[i] = NULL;
+			img_rd.buf[i] = NULL;
+		} else {
+			printf("free failed:%d\n",i);
+		}
+        }
+	if ((img_wr.buf) && (img_rd.buf)) {
+		free(img_wr.buf);
+		free(img_rd.buf);
+		img_wr.buf = NULL;
+		img_rd.buf = NULL;
+	} else {
+		printf("free failed\n");
+	}
 	return ret;
 }

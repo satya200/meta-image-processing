@@ -7,6 +7,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
+#include<unistd.h>
 
 #define IMG_NAME_BUFF_LENGTH	32
 #define IMG_NAME_PATH_LENGTH	512
@@ -17,6 +18,9 @@
 #define BMP_HEADER_SIZE         54
 #define BMP_COLOR_TABLE_SIZE    1024
 #define CUSTOM_IMG_SIZE         1024*1024
+//#define CUSTOM_IMG_SIZE         12*12
+
+//#pragma pack (1)
 
 enum image_type {
 	GREAY = 0,
@@ -62,7 +66,7 @@ struct image_writer_mat {
 int bmp_image_read(struct image_reader *img_rd);
 int bmp_image_write(struct image_writer *img_wr);
 int bmp_image_read_mat(struct image_reader_mat *img_rd);
-int bmp_image_write_mat(struct image_writer_mat *img_wr, int);
+int bmp_image_write_mat(struct image_writer_mat *img_wr, int, int);
 int image_copy();
 int bmp_rgb_to_gry();
 int bmp_img_to_blkwhi();

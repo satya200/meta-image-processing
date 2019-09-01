@@ -57,10 +57,10 @@ int bmp_image_write(struct image_writer *img_wr)
  * Return : 0 = on Success
  * 	    < 0 = On Failure
  * */
-int bmp_image_write_mat(struct image_writer_mat *img_wr, int img_size)
+int bmp_image_write_mat(struct image_writer_mat *img_wr, int row, int col)
 {
 	FILE *fp_dst = NULL;
-	//int img_size;
+	int i;
 
 	if (img_wr == NULL) {
 		printf("%s parameter NULL\n",__FUNCTION__);
@@ -84,9 +84,11 @@ int bmp_image_write_mat(struct image_writer_mat *img_wr, int img_size)
 		printf("color depth:%d\n",img_wr->bitDepth);
 		fwrite(img_wr->colorTable, sizeof(unsigned char), 1024, fp_dst);
 	}
-	//img_size = ((img_wr->height) * (img_wr->width));
+	//printf("Before write img_size ==>%d\n",img_size);
 	/* Writting Data to new file */
-	fwrite((*(img_wr->buf)),sizeof(unsigned char), img_size, fp_dst);
+	for (i = 0; i < row; i++)
+		fwrite((img_wr->buf[i]),sizeof(unsigned char), row, fp_dst);
+	//fwrite((*(img_wr->buf)),sizeof(unsigned char), img_size, fp_dst);
 
 	fclose(fp_dst);
 
@@ -169,7 +171,10 @@ int bmp_image_read_mat(struct image_reader_mat *img_rd)
 	printf("After malloc In read:%x:%d\n",img_rd->buf[0][0], img_size);
 	printf("=============> Going to read file\n");
 	/* Reading Data */
-	fread((*(img_rd->buf)), sizeof(unsigned char), img_size, fp_src);
+	int i;
+	for (i = 0; i < width; i++)
+		fread(img_rd->buf[i], sizeof(unsigned char), width, fp_src);
+	//fread((*(img_rd->buf)), sizeof(unsigned char), img_size, fp_src);
 	printf("In read:%x\n",img_rd->buf[0][0]);
 	printf("=============> Finshed to read file\n");
 	fclose(fp_src);
