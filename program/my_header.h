@@ -76,3 +76,4 @@ int bmp_creat_histogram();
 int bmp_histogram_equ();
 int bmp_brightness_correction();
 int bmp_image_rotation();
+int bmp_negative_img();

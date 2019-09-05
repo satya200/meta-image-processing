@@ -8,11 +8,12 @@
 #include"my_header.h"
 
 #define BRIGHTNESS_FACTOR   100
+#define NEGATIVE_FACTOR   255
 #define MAX_COLOR   255
 
 /*
- * Name: bmp_img_to_blkwhi()
- * Desc: This is used for Convert RGB to greay scale image.
+ * Name: bmp_img_increase_bright()
+ * Desc: This is used for increase broghtness of image.
  * Parameter: No Parameter
  * Return : 0 = on Success
  *          < 0 = On Failure
@@ -74,6 +75,13 @@ int bmp_img_increase_bright()
 	return 0;
 }
 
+/*
+ * Name: bmp_brightness_correction()
+ * Desc: This is used for correct brightness.
+ * Parameter: No Parameter
+ * Return : 0 = on Success
+ *          < 0 = On Failure
+ * */
 int bmp_brightness_correction()
 {
 	int ret = -1;
@@ -121,6 +129,65 @@ int bmp_brightness_correction()
 	ret = bmp_image_write(&img_wr);
 	if (ret < 0) {
 		printf("Error return from image_erite bmp_brightness_correction()\n");
+	} else {
+		printf("Image write success\n");
+        }
+	return ret;
+}
+
+/*
+ * Name: bmp_negative_img()
+ * Desc: This is used for increase broghtness of image.
+ * Parameter: No Parameter
+ * Return : 0 = on Success
+ *          < 0 = On Failure
+ * */
+int bmp_negative_img()
+{
+	int ret = -1;
+	int x, y, row, col;
+	FILE *fp_src = NULL;
+
+	char img_name_src_path[IMG_NAME_PATH_LENGTH] = {0};
+	char img_name_dst_path[IMG_NAME_PATH_LENGTH] = {0};
+	char src_img_name[IMG_NAME_BUFF_LENGTH] = {0};
+	struct image_reader img_rd;
+	struct image_writer img_wr;
+	int temp, bright;
+
+	printf("Please Enter bmp image name\n");
+	scanf("%s",src_img_name);
+	sprintf(img_name_src_path, "%s/%s",IMG_SEARCH_PATH, src_img_name);
+	sprintf(img_name_dst_path, "%s/negative_%s",IMG_SEARCH_PATH, src_img_name);
+	printf("Source image:%s\nDest image:%s\n",img_name_src_path, img_name_dst_path);
+
+	strcpy(img_rd.image_name, img_name_src_path);
+	ret = bmp_image_read(&img_rd);
+	if (ret < 0) {
+		printf("Error return from bmp_negative()\n");
+	} else {
+		printf("Image read success\n");
+        }
+
+	strcpy(img_wr.new_image_name, img_name_dst_path);
+	printf("====> New name: %s\n",img_wr.new_image_name);
+	memcpy(img_wr.header, img_rd.header, sizeof(img_rd.header));
+	memcpy(img_wr.colorTable, img_rd.colorTable, sizeof(img_rd.colorTable));
+	img_wr.bitDepth = img_rd.bitDepth;
+
+	row = img_rd.height;
+        col = img_rd.width;
+	/* Algo for brightness correction */
+	for (y = 0; y < row; y++) {
+		for (x = 0; x < col; x++) {
+			//bright = *((img_rd.buf)+x+y*col) - NEGATIVE_FACTOR;
+			bright = 255 - (*((img_rd.buf)+x+y*col));
+			*((img_wr.buf)+x+y*col) = bright;
+		}
+	}
+	ret = bmp_image_write(&img_wr);
+	if (ret < 0) {
+		printf("Error return from image_write bmp_negative()\n");
 	} else {
 		printf("Image write success\n");
         }
