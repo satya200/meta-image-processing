@@ -4,6 +4,10 @@ https://www.tutorialspoint.com/dip/grayscale_to_rgb_conversion
 
 http://www.dragonwins.com/domains/getteched/bmp/bmpfileformat.htm  ==> Help for BMP file format
 
+https://docs.opencv.org/master/d3/dc1/tutorial_basic_linear_transform.html  ==> Opencv related link
+
+https://solarianprogrammer.com/2019/06/10/c-programming-reading-writing-images-stb_image-libraries/
+
 
 Completed:
 -----------
@@ -19,7 +23,16 @@ https://www.tutorialspoint.com/dip/zooming_methods.htm
 
 https://www.tutorialspoint.com/dip/concept_of_dithering.htm
 
+https://www.tutorialspoint.com/dip/gray_level_transformations.htm
+
 ////////////////////////////////////////////////////////////////////////
+
+1> How to calculate Contrast value of ana image?
+
+2> How to write program for histogram stretching and histogram sliding?
+
+3> 
+/////////////////////////////////////////////////////////////////////////////
 
 Mostly We called this as a Digital Image Processing(DIP)
 
@@ -125,7 +138,7 @@ Color processing means process of colored images and different color spaces that
 
 Video Processing:
 ------------------
-A video is nothing but just very fast movement of pictures. The quality of video depends on number of frames/picture per second and quality of each frame is being used. Video processing involves noise reduction, detail enhancment, motion detection, frame rate conversion, asept ratio conversion, color space conversion etc.
+A video is nothing but just very fast movement of pictures. The quality of video depends on nlighthouse.bmpumber of frames/picture per second and quality of each frame is being used. Video processing involves noise reduction, detail enhancment, motion detection, frame rate conversion, asept ratio conversion, color space conversion etc.
 
 Dimension:
 -----------
@@ -601,8 +614,48 @@ Image Data Type:
 
 3> RGB or true color image  ===> 3D array. Each pixel having 3 R, G, B field
 
-4> Floating - Point Image   ===> Do not store integer value. Only store floating value. Mostly use in medical, science etc. 
- 
+4> Floating - Point Image   ===> Do not store integer value. Only store floating value. Mostly use in medical, science etc.
+///////////////////////////////////////////
+
+Histograms
+
+A histogram is a graph. A graph that shows frequency of anything. Usually histogram have bars that represent frequency of occurring of data in the whole data set.
+
+A Histogram has two axis the x axis and the y axis.
+
+The x axis contains event whose frequency you have to count.
+
+The y axis contains frequency.
+
+The different heights of bar shows different frequency of occurrence of data.
+
+Application Of Histogram:
+--------------------------
+1> This is mostly use for balance brightness and contrast level.
+
+2> This is use to equilze the image.
+
+3> This is use for thersolding. Mostly use in computer vision.
+
+Brightness:
+------------
+Brightness is a relative term. It depends on your visual perception. Since brightness is a relative term, so brightness can be defined as the amount of energy output by a source of light relative to the source we are comparing it to. In some cases we can easily say that the image is bright, and in some cases, its not easy to perceive.
+
+Contrast:
+----------
+This is the difference between max and min pixel intensity in an image.
+
+Formula To Increase Contrast:
+------------------------------
+	g(x, y) = ((f(x, y) - Fmin)/(Fmax - Fmin)) * 2bpp (bpp: bit per pixel for 8 bit greay scale 255)
+
+
+
+
+
+Dithering:
+----------
+
 
 
 
