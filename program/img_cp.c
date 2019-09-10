@@ -37,6 +37,7 @@ int bmp_image_write(struct image_writer *img_wr)
 
 	/* Writting Color Table  to new file */
 	if (img_wr->bitDepth <= 8) {
+		printf("color depth:%d\n",img_wr->bitDepth);
 		fwrite(img_wr->colorTable, sizeof(unsigned char), 1024, fp_dst);
 	}
 
@@ -44,6 +45,139 @@ int bmp_image_write(struct image_writer *img_wr)
 	fwrite(img_wr->buf,sizeof(unsigned char),CUSTOM_IMG_SIZE, fp_dst);
 
 	fclose(fp_dst);
+
+	return 0;
+}
+
+/*
+ * Name: bmp_image_write_mat()
+ * Desc: This is used for write an image.
+ * Parameter: img_wr is a strusture. for structure member
+ * 	      Refer "my_header.h" file.
+ * Return : 0 = on Success
+ * 	    < 0 = On Failure
+ * */
+int bmp_image_write_mat(struct image_writer_mat *img_wr, int row, int col)
+{
+	FILE *fp_dst = NULL;
+	int i;
+
+	if (img_wr == NULL) {
+		printf("%s parameter NULL\n",__FUNCTION__);
+		return -1;
+	}
+
+	/* Start Writting BMP File */
+	fp_dst = fopen(img_wr->new_image_name, "wb");
+	if (fp_dst == NULL) {
+		printf("File Not Present\n");
+		return -1;
+	} else {
+		printf("Dst file open successfuly\n");
+	}
+
+	/* Writting Header to new file */
+	fwrite(img_wr->header, sizeof(unsigned char), BMP_HEADER_SIZE, fp_dst);
+
+	/* Writting Color Table  to new file */
+	if (img_wr->bitDepth <= 8) {
+		printf("color depth:%d\n",img_wr->bitDepth);
+		fwrite(img_wr->colorTable, sizeof(unsigned char), 1024, fp_dst);
+	}
+	//printf("Before write img_size ==>%d\n",img_size);
+	/* Writting Data to new file */
+	for (i = 0; i < row; i++)
+		fwrite((img_wr->buf[i]),sizeof(unsigned char), row, fp_dst);
+	//fwrite((*(img_wr->buf)),sizeof(unsigned char), img_size, fp_dst);
+
+	fclose(fp_dst);
+
+	return 0;
+}
+
+/*
+ * Name: bmp_image_read_mat()
+ * Desc: This is used for Read an image in 2D Matrix. 
+ * Parameter: img_rd is a struct image_reader.
+ * Return : 0 = on Success
+ * 	    < 0 = On Failure
+ * */
+int bmp_image_read_mat(struct image_reader_mat *img_rd)
+{
+	FILE *fp_src = NULL;
+	int height, width, img_size;
+
+	if (img_rd == NULL) {
+		printf("%s parameter NULL\n",__FUNCTION__);
+		return -1;
+	}
+
+	/* Start Reading BMP File */
+	fp_src = fopen(img_rd->image_name, "rb");
+	if (fp_src == NULL) {
+		printf("File Not Present\n");
+		return -1;
+	} else {
+		printf("Src file open successfuly\n");
+	}
+
+	/* Reading Header 54 bytes in BMP image */
+	for (int i = 0; i < BMP_HEADER_SIZE; i++) {
+		img_rd->header[i] = getc(fp_src);
+	}
+	printf("1st====>%d\n",img_rd->header[0]);
+	printf("2nd=====>%d\n",img_rd->header[1]);
+
+	if ((img_rd->header[0] != 66) || (img_rd->header[1] != 77)) {
+		printf("THIS FILE IS NOT BMP FILE\n");
+		return -2;
+	}
+	/* Reading Width From Header */
+	(img_rd->width) = *(int *)(&(img_rd->header[18]));
+	width = img_rd->width;
+
+	/* Reading Height From Header */
+	(img_rd->height) = *(int *)(&(img_rd->header[22]));
+	height = img_rd->height;
+
+	/* Reading bitDepth From Header. This is use for identify either color
+	   Table is present or not
+	 */
+	(img_rd->bitDepth) = *(int *)(&(img_rd->header[28]));
+
+	printf("Width = %d\nHeight = %d\nDepth = %d\n",(img_rd->width), (img_rd->height), (img_rd->bitDepth));
+	/* Reading Color Table */
+	if ((img_rd->bitDepth) <= 8) {
+		printf("Image having color table\n");
+		fread(img_rd->colorTable, sizeof(unsigned char), 1024, fp_src);
+	}
+
+	img_size = width * height;
+	//width = width + 1;
+	//height = height + 1;
+	/* DMA Memory Allocation */
+	img_rd->buf = (unsigned char ** )malloc(width * sizeof(unsigned char *));
+	if (img_rd->buf == NULL) {
+		printf("malloc return NULL\n");
+		return -1;
+	}
+	for (int i = 0; i < width; i++) {
+		img_rd->buf[i] = (unsigned char *)malloc(height * sizeof(unsigned char));
+		if (img_rd->buf[i] == NULL) {
+			printf("malloc return NULL\n");
+			return -1;
+		}
+	}
+	printf("After malloc In read:%x:%d\n",img_rd->buf[0][0], img_size);
+	printf("=============> Going to read file\n");
+	/* Reading Data */
+	int i;
+	for (i = 0; i < width; i++)
+		fread(img_rd->buf[i], sizeof(unsigned char), width, fp_src);
+	//fread((*(img_rd->buf)), sizeof(unsigned char), img_size, fp_src);
+	printf("In read:%x\n",img_rd->buf[0][0]);
+	printf("=============> Finshed to read file\n");
+	fclose(fp_src);
 
 	return 0;
 }
